@@ -1,17 +1,8 @@
-Function CurrencyToWords(Amount As Currency) As String
-    Dim Rupees As Long
-    Dim Paise As Long
-    Dim Result As String
+Function CurrencyToWords(amount As Currency) As String
+    Dim rupees As Long
+    Dim paise As Long
+    rupees = Int(amount)
+    paise = Int((amount - rupees) * 100)
 
-    ' Separate the amount into rupees and paise
-    Rupees = Fix(Amount)
-    Paise = (Amount - Rupees) * 100
-
-    ' Get the words for rupees and paise
-    Result = NumberToWords(Rupees) & " Rupees"
-    If Paise > 0 Then
-        Result = Result & " and " & NumberToWords(Paise) & " Paise"
-    End If
-
-    CurrencyToWords = Result
+    CurrencyToWords = "Rupees " & NumberToWords(rupees) & " and Paise " & NumberToWords(paise)
 End Function
